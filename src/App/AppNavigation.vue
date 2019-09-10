@@ -1,9 +1,9 @@
 <template>
-    <nav class="navbar is-light">
+    <nav class="navbar is-light is-fixed-top">
         <div class="container">
             <div class="navbar-brand">
                 <router-link to="/" class="navbar-item">
-                    <span>M</span>
+                    <img src="/assets/images/marvinisaac_black.png" />
                 </router-link>
                 <a class="navbar-burger burger"
                     v-bind:class="{'is-active': showMobileNavbar}"
@@ -53,13 +53,8 @@ export default {
 
 <style lang="scss" scoped>
 .navbar {
-    position: sticky;
-    top: 0;
     .container {
         .navbar-start {
-            .navbar-item {
-                text-align: center;
-            }
             .router-link-exact-active {
                 font-weight: bolder;
             }
