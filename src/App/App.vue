@@ -2,16 +2,19 @@
 	<div id="app">
 		<navigation v-bind:navigation-links="this.links"></navigation>
 		<router-view class="section"></router-view>
+        <custom-footer></custom-footer>
 	</div>
 </template>
 
 <script>
 import Navigation from './AppNavigation.vue'
+import CustomFooter from './AppFooter.vue'
 
 export default {
 	name: 'App',
 	components: {
-		Navigation
+        Navigation,
+        CustomFooter
 	},
 	data () {
 		return {
