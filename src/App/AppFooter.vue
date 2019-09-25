@@ -5,7 +5,8 @@
                 <a class="button is-text"
                     v-for="(link, index) in this.footerLinks"
                     v-bind:key="index"
-                    v-bind:href="link.destination">
+                    v-bind:href="link.destination"
+                    @click="logClick(link.text)">
                     {{ link.text }}
                 </a>
             </div>
@@ -18,6 +19,11 @@ export default {
     name: 'CustomFooter',
     props: {
         footerLinks: Array
+    },
+    methods: {
+        logClick (link) {
+            this.$ga.event('Footer', 'Click', link, 1)
+        }
     }
 }
 </script>
