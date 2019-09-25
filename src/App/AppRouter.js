@@ -47,6 +47,19 @@ export default new Router({
             meta: {
                 title: 'Why'
             }
+        }, {
+            path: '/omo',
+            name: 'omo',
+            component: () => import(
+                /* webpackChunkName: "omo" */
+                './Pages/Omo.vue'
+            ),
+            meta: {
+                title: 'Omo!'
+            }
+        }, {
+            path: '*',
+            redirect: '/omo'
         }
     ]
 })
