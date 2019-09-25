@@ -3,7 +3,7 @@
         <div class="container">
             <div class="navbar-brand">
                 <router-link to="/" class="navbar-item">
-                    <img src="/assets/images/marvinisaac_black.png" />
+                    <img src="/images/marvinisaac_black.png" />
                 </router-link>
                 <a class="navbar-burger burger"
                     v-bind:class="{'is-active': showMobileNavbar}"
@@ -54,6 +54,11 @@ export default {
 <style lang="scss" scoped>
 .navbar {
     .container {
+        .navbar-brand {
+            .navbar-item {
+                padding: 0.5rem 1.25rem;
+            }
+        }
         .navbar-start {
             .router-link-exact-active {
                 font-weight: bolder;
