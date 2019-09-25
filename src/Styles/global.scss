@@ -1,5 +1,7 @@
 @charset 'utf-8';
-@import '../../node_modules/bulma/bulma.sass';
+
+@import url('https://fonts.googleapis.com/css?family=Handlee|Karla&display=swap');
+@import './variables.scss';
 
 html {
     min-height: 100vh;
@@ -10,3 +12,5 @@ html {
         width: 100%;
     }
 }
+
+@import '../../node_modules/bulma/bulma.sass';
