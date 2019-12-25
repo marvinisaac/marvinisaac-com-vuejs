@@ -1,3 +1,3 @@
-docker run -d marvin/marvinisaac-com-vuejs \
-	--name marvinisaac-com \
+docker run --name marvinisaac-com \
+	-d marvin/marvinisaac-com-vuejs
 
