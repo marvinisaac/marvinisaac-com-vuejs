@@ -9,5 +9,5 @@ RUN npm run build
 
 # production stage
 FROM nginx:alpine as production-stage
-ENV VIRTUAL_HOST marvinisaac-com.docker-experiment.com
+ENV VIRTUAL_HOST docker.marvinisaac.com
 COPY --from=build-stage /app/dist /usr/share/nginx/html
