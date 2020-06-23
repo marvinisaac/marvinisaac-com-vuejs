@@ -10,6 +10,9 @@ const routes = [
         path: '/',
         component: Home
     }, {
+        path: '/blog',
+        component: Blog
+    }, {
         path: '*',
         redirect: '/'
     }

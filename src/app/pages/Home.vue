@@ -14,9 +14,10 @@
                 </a>
             </div>
             <div class="column has-buttons-right">
-                <a class="button" target="_blank"
+                <a class="button"
                     v-for="(link, index) in right"
                     :key="index"
+                    :target="setTarget(link.newTab)"
                     :href="link.url">
                     {{link.text}}
                 </a>
@@ -28,25 +29,31 @@
 <script>
 export default {
     data: () => ({
-        left: [
-            {
-                'text': 'LinkedIn',
-                'url': 'http://marvin.ph'
-            }, {
-                'text': 'GitHub',
-                'url': 'http://github.com/marvinisaac'
-            // }, {
-            //     'text': 'Tutorials',
-            //     'url': 'https://thepinoydev.com'
+        left: [{
+            'text': 'LinkedIn',
+            'url': 'http://marvin.ph'
+        }, {
+            'text': 'GitHub',
+            'url': 'http://github.com/marvinisaac'
+        // }, {
+        //     'text': 'Tutorials',
+        //     'url': 'https://thepinoydev.com'
+        }],
+        right: [{
+            'newTab': false,
+            'text': 'Blog',
+            'url': '/blog'
+        }]
+    }),
+    methods: {
+        setTarget: (shouldOpenNewTab) => {
+            if (shouldOpenNewTab) {
+                return '_blank'
             }
-        ],
-        right: [
-            // {
-            //     'text': 'Blog',
-            //     'url': 'https://blog.marvinisaac.com'
-            // }
-        ]
-    })
+
+            return ''
+        }
+    }
 }
 </script>
 
