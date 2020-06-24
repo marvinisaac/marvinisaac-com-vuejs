@@ -41,8 +41,8 @@ export default {
         }],
         right: [{
             'newTab': false,
-            'text': 'Blog',
-            'url': '/blog'
+            'text': 'Articles',
+            'url': '/article'
         }]
     }),
     methods: {
