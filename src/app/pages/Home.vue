@@ -59,7 +59,9 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-    padding-bottom: 20vh;
+    margin: 0 auto;
+    max-width: 480px;
+    padding: 1.5rem 1.5rem 20vh;
 
     .title-container {
         margin-bottom: 5rem;

@@ -7,8 +7,7 @@
 </template>
 
 <style lang="scss" scoped>
-.hero {
-    margin: 0 auto;
-    max-width: 480px;
+.hero-body {
+    padding: 0;
 }
 </style>
