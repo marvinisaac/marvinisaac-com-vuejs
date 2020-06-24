@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from './../pages/Home.vue'
-import ArticleList from './../pages/Article/ArticleList.vue'
+import Article from './../pages/Article/Article.vue'
 
 Vue.use(VueRouter)
 
@@ -10,8 +10,9 @@ const routes = [
         path: '/',
         component: Home
     }, {
-        path: '/article',
-        component: ArticleList
+        path: '/article/:title?',
+        component: Article,
+        props: true
     }, {
         path: '*',
         redirect: '/'
