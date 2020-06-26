@@ -1,14 +1,16 @@
 <template>
     <div class="container">
-        <ul>
-            <li
-                v-for="(article, index) in articleList"
-                :key="index">
-                <a :href="'/article/' + index">
-                    {{article.titleOriginal}}
-                </a>
-            </li>
-        </ul>
+        <div class="content">
+            <ul>
+                <li
+                    v-for="(article, index) in articleList"
+                    :key="index">
+                    <router-link :to="`/article/${index}`">
+                        {{article.titleOriginal}}
+                    </router-link>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -22,6 +24,13 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-    text-align: initial;
+    .content {
+        padding: 0 1.5rem;
+
+        ul {
+            list-style: none;
+            margin-left: 0;
+        }
+    }
 }
 </style>

@@ -1,31 +1,38 @@
 <template>
     <div class="container">
-        <div class="level is-mobile">
-            <div class="level-left">
-                <div class="buttons">
-                    <a class="button is-small" href="/">
-                        <span class="has-text-weight-bold">
-                            🏠
-                        </span>
-                    </a>
-                    <button class="button is-small is-thin is-white" disabled>
-                        <span>
-                            /
-                        </span>
-                    </button>
-                    <a class="button is-small" href="/article">
-                        <span class="has-text-weight-bold">
-                            article
-                        </span>
-                    </a>
-                </div>
-            </div>
+        <div class="buttons">
+            <router-link to="/" class="button is-small">
+                <span class="has-text-weight-bold">
+                    🏠
+                </span>
+            </router-link>
+            <button class="button is-small is-thin is-white" disabled>
+                <span>/</span>
+            </button>
+            <router-link to="/article" class="button is-small">
+                <span class="has-text-weight-bold">
+                    article
+                </span>
+            </router-link>
+            <template v-if="title !== undefined && isTitleFound">
+                <button class="button is-small is-thin is-white" disabled>
+                    <span>/</span>
+                </button>
+                <router-link :to="`/article/${title}`" class="button is-small">
+                    <span class="has-text-weight-bold">
+                        {{title}}
+                    </span>
+                </router-link>
+            </template>
         </div>
-        <div class="contents">
-            <article-list v-if="title === undefined"
-                :article-list="articleList">
-            </article-list>
-        </div>
+
+        <article-list v-if="title === undefined"
+            :article-list="articleList">
+        </article-list>
+
+        <article-single v-if="isTitleFound()"
+            :article-id="articleId">
+        </article-single>
     </div>
 </template>
 
@@ -33,10 +40,12 @@
 import DirectusSDK from '@directus/sdk-js'
 import slugify from 'slugify'
 import ArticleList from './ArticleList.vue'
+import ArticleSingle from './ArticleSingle.vue'
 
 export default {
     components: {
-        ArticleList
+        ArticleList,
+        ArticleSingle
     },
     props: {
         title: String
@@ -44,10 +53,14 @@ export default {
     data: () => ({
         api: undefined,
         articleList: undefined,
-        cdnUrl: process.env.VUE_APP_CDN_URL,
         cmsUrl: process.env.VUE_APP_CMS_URL,
         project: process.env.VUE_APP_CMS_PROJECT
     }),
+    computed: {
+        articleId: function () {
+            return this.articleList[this.title]['id']
+        }
+    },
     async created () {
         this.api = new DirectusSDK({
             url: this.cmsUrl,
@@ -69,6 +82,11 @@ export default {
                 .then((articles) => {
                     return this._buildTitleMap(articles.data)
                 })
+        },
+        isTitleFound () {
+            return this.articleList !== undefined &&
+                this.title !== undefined &&
+                this.articleList[this.title] !== undefined
         },
         _buildTitleMap (articles) {
             let slugOptions = {
@@ -96,20 +114,16 @@ export default {
     margin: 0 auto;
     margin-bottom: auto;
     max-width: 960px;
+    text-align: initial;
 
-    .level {
+    .buttons {
+        margin-bottom: 0;
         padding: 0.5rem 1.5rem;
 
-        .buttons {
-            .button.is-thin {
-                padding-left: 0;
-                padding-right: 0;
-            }
+        .button.is-thin {
+            padding-left: 0;
+            padding-right: 0;
         }
-    }
-
-    .contents {
-        padding: 0 1.5rem;
     }
 }
 </style>
