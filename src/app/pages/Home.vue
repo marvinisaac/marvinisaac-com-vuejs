@@ -2,25 +2,24 @@
     <div class="container">
         <div class="title-container">
             <h1 class="title is-size-3">Marvin Isaac</h1>
-            <h2 class="subtitle is-size-6">Developer</h2>
+            <h2 class="subtitle is-size-6">Developer - Writer</h2>
         </div>
         <div class="columns is-mobile">
             <div class="column has-buttons-left">
                 <a class="button" target="_blank"
-                    v-for="(link, index) in left"
+                    v-for="(link, index) in left.external"
                     :key="index"
                     :href="link.url">
                     {{link.text}}
                 </a>
             </div>
             <div class="column has-buttons-right">
-                <a class="button"
-                    v-for="(link, index) in right"
+                <router-link class="button"
+                    v-for="(link, index) in right.internal"
                     :key="index"
-                    :target="setTarget(link.newTab)"
-                    :href="link.url">
+                    :to="link.url">
                     {{link.text}}
-                </a>
+                </router-link>
             </div>
         </div>
     </div>
@@ -29,21 +28,21 @@
 <script>
 export default {
     data: () => ({
-        left: [{
-            'text': 'LinkedIn',
-            'url': 'http://marvin.ph'
-        }, {
-            'text': 'GitHub',
-            'url': 'http://github.com/marvinisaac'
-        // }, {
-        //     'text': 'Tutorials',
-        //     'url': 'https://thepinoydev.com'
-        }],
-        right: [{
-            'newTab': false,
-            'text': 'Articles',
-            'url': '/article'
-        }]
+        left: {
+            external: [{
+                'text': 'LinkedIn',
+                'url': 'http://marvin.ph'
+            }, {
+                'text': 'GitHub',
+                'url': 'http://github.com/marvinisaac'
+            }]
+        },
+        right: {
+            internal: [{
+                'text': 'Articles',
+                'url': '/article'
+            }]
+        }
     }),
     methods: {
         setTarget: (shouldOpenNewTab) => {
@@ -85,7 +84,7 @@ export default {
                 transition: all 0.3s cubic-bezier(.25,.8,.25,1);
             }
 
-            .button:hover {
+            .button:not(.is-small):hover {
                 box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
             }
         }
