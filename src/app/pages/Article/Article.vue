@@ -33,6 +33,10 @@
         <article-single v-if="isTitleFound()"
             :article-id="articleId">
         </article-single>
+
+        <article-not-found v-if="title !== undefined && !isTitleFound()">
+            Article not found.
+        </article-not-found>
     </div>
 </template>
 
@@ -41,11 +45,13 @@ import DirectusSDK from '@directus/sdk-js'
 import slugify from 'slugify'
 import ArticleList from './ArticleList.vue'
 import ArticleSingle from './ArticleSingle.vue'
+import ArticleNotFound from './ArticleNotFound.vue'
 
 export default {
     components: {
         ArticleList,
-        ArticleSingle
+        ArticleSingle,
+        ArticleNotFound
     },
     props: {
         title: String
