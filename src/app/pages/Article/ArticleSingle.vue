@@ -65,7 +65,7 @@ export default {
                 return `${this.cdnUrl}/${imageDefault}`
             }
 
-            return `${this.cdnUrl}/directus/${this.project}/originals/${file.filename_disk}`
+            return `${this.cdnUrl}/cms/${this.project}/originals/${file.filename_disk}`
         }
     }
 }
