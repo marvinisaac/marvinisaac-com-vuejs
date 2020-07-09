@@ -34,7 +34,7 @@
             :article-id="articleId">
         </article-single>
 
-        <article-not-found v-if="title !== undefined && !isTitleFound()">
+        <article-not-found v-if="isArticleNotFound">
             Article not found.
         </article-not-found>
     </div>
@@ -65,6 +65,11 @@ export default {
     computed: {
         articleId: function () {
             return this.articleList[this.title]['id']
+        },
+        isArticleNotFound: function () {
+            return this.title !== undefined &&
+                this.ArticleList !== undefined &&
+                !this.isTitleFound()
         }
     },
     async created () {
