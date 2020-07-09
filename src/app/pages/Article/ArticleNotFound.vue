@@ -20,6 +20,9 @@
 
 <script>
 export default {
+    metaInfo: {
+        title: 'Article Not Found'
+    },
     data: () => ({
         cdnUrl: process.env.VUE_APP_CDN_URL,
         messageList: [{

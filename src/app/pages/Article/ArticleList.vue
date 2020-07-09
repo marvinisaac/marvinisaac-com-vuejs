@@ -16,6 +16,9 @@
 
 <script>
 export default {
+    metaInfo: {
+        title: 'Articles'
+    },
     props: {
         articleList: Object
     }

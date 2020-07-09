@@ -19,6 +19,13 @@
 import DirectusSDK from '@directus/sdk-js'
 
 export default {
+    metaInfo () {
+        if (this.article !== undefined) {
+            return {
+                title: this.article.title
+            }
+        }
+    },
     props: {
         articleId: Number
     },
