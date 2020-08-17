@@ -35,14 +35,12 @@ export default {
             }, {
                 'text': 'GitHub',
                 'url': 'http://github.com/marvinisaac'
+            }, {
+                'text': 'Code with Kuya Marvin',
+                'url': 'https://codewithkuya.marvinisaac.com'
             }]
         },
-        right: {
-            internal: [{
-                'text': 'Articles',
-                'url': '/article'
-            }]
-        }
+        right: {}
     }),
     methods: {
         setTarget: (shouldOpenNewTab) => {
