@@ -40,7 +40,12 @@ export default {
                 'url': 'https://codewithkuya.marvinisaac.com'
             }]
         },
-        right: {}
+        right: {
+            external: [{
+                'text': 'Wrotten by Marvin',
+                'url': 'https://wrottenby.marvinisaac.com'
+            }]
+        }
     }),
     methods: {
         setTarget: (shouldOpenNewTab) => {
