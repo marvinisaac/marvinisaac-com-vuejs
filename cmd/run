@@ -6,41 +6,33 @@ function setup()
 
     source .env
     export DOCKER_NETWORK \
-        DOCKER_PUBLIC_URL
+        PUBLIC_URL
 }
 
 function run()
 {
     echo '>>> Running...'
 
-    docker run -d \
-        -e VIRTUAL_HOST=$DOCKER_PUBLIC_URL \
+    docker run \
+        -e VIRTUAL_HOST=$PUBLIC_URL \
+        -e CERT_NAME=shared \
         -v $PWD/dist:/usr/share/nginx/html \
         -v $PWD/site.conf:/etc/nginx/conf.d/site.conf \
-        --name ${PWD##*/}-nginx \
+        --name ${PWD##*/} \
         --network $DOCKER_NETWORK \
         nginx:alpine
-
-    docker run \
-        -v $PWD:/usr/src/app \
-        -w /usr/src/app \
-        --name ${PWD##*/}-node \
-        --network $DOCKER_NETWORK \
-        node:lts-alpine \
-        npm run serve
 }
 
 function cleanup()
 {
     echo '>>> Cleaning up...'
-    docker stop ${PWD##*/}-nginx
-    docker stop ${PWD##*/}-node
+    docker stop ${PWD##*/}
 
-    docker rm ${PWD##*/}-nginx
-    docker rm ${PWD##*/}-node
+    docker rm ${PWD##*/}
     echo '>>> Cleanup done. Have a great day!'
 }
 
+cleanup
 setup
 run
 
