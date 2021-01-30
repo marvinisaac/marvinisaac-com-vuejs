@@ -14,12 +14,12 @@
                 </a>
             </div>
             <div class="column has-buttons-right">
-                <router-link class="button"
-                    v-for="(link, index) in right.internal"
+                <a class="button" target="_blank"
+                    v-for="(link, index) in right.external"
                     :key="index"
-                    :to="link.url">
+                    :href="link.url">
                     {{link.text}}
-                </router-link>
+                </a>
             </div>
         </div>
     </div>
@@ -42,8 +42,8 @@ export default {
         },
         right: {
             external: [{
-                'text': 'Wrotten by Marvin',
-                'url': 'https://wrottenby.marvinisaac.com'
+                'text': 'By Marvin',
+                'url': 'https://by.marvinisaac.com'
             }]
         }
     }),
