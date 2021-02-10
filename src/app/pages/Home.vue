@@ -61,7 +61,7 @@ export default {
 
 <style lang="scss" scoped>
 .container {
-    background: url('https://cdn.halohalolabs.com/marvinisaac-com/brain-hemispheres.svg') center center no-repeat;
+    background: url('https://hhl.sfo2.cdn.digitaloceanspaces.com/marvinisaac/brain-hemispheres.svg') center center no-repeat;
     background-size: auto;
     margin: 0 auto;
     max-width: 480px;
